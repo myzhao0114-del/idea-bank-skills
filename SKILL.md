@@ -1,6 +1,6 @@
 ---
 name: paper-method-deconstruct
-description: Deep-read one or more research papers from the author's perspective to reverse-engineer their method — design rationale, technical approach, required input data (raster, grid-extracted tables, vectors, time series, etc.), produced outputs, and how to transplant the method into a different domain or dataset. Use when the user gives paper PDFs/links/text and asks "怎么学这篇论文的方法", "这个方法的设计思路是什么", "输入输出是什么", "能不能用到我的数据/领域上", or wants a reproducible method breakdown rather than a literature summary.
+description: Deep-read one or more research papers from the author's perspective to reverse-engineer their method — design rationale, technical approach, required input data (raster, grid-extracted tables, vectors, time series, etc.), produced outputs, and how to transplant the method into a different domain or dataset. Also maintains a cumulative "方法模块知识库" Markdown file that aggregates reusable method modules across papers read over time. Use when the user gives paper PDFs/links/text and asks "怎么学这篇论文的方法", "这个方法的设计思路是什么", "输入输出是什么", "能不能用到我的数据/领域上", or wants a reproducible method breakdown rather than a literature summary.
 ---
 
 # 论文作者视角精读
@@ -24,6 +24,11 @@ description: Deep-read one or more research papers from the author's perspective
 - 用户是否有自己的数据/领域，想直接评估迁移可行性？如果有，简要了解数据形态（栅格影像、格网提取的表格、矢量、点位观测、时序等）和研究问题，后续第 6 步会用到。
 
 不确定时给出默认假设（逐篇精读 + 最后给迁移建议），让用户一句话确认或修改。
+
+同时确定**方法模块知识库**的位置（第 8 步会用到）：
+- 用户指定了文件夹，则知识库写入 `<指定文件夹>/方法模块知识库.md`。
+- 未指定时，默认写入本次分析的 PDF 所在目录下的 `方法模块知识库.md`。
+- 如果用户明确表示不需要知识库，跳过第 8 步即可。
 
 ### 第 2 步：通读全文，定位关键章节
 
@@ -74,6 +79,21 @@ description: Deep-read one or more research papers from the author's perspective
 
 按 `references/note-template.md` 的结构为每篇论文生成一份 Markdown 笔记。多篇论文时，额外生成一张横向对比表（设计思想差异、数据需求差异、输出差异、迁移难度对比）。
 
+### 第 8 步：更新方法模块知识库
+
+把本篇论文中"换个数据集/领域依然成立的设计思路"提炼成模块，追加或合并进第 1 步确定位置的 `方法模块知识库.md`，使其随着精读论文数量不断迭代积累。
+
+读取 `references/module-knowledge-base.md` 获取模块条目格式、推荐分类和合并规则，然后：
+
+1. **若知识库文件不存在**：按参考文件中的骨架新建一份。
+2. **若已存在**：先完整读取全文，了解已有模块和分类体系，保持风格一致。
+3. **提取候选模块**：来源主要是第 4 步的核心模型/算法机制和第 6 步识别出的"领域无关核心机制"，不要把论文的全部细节都塞进去——只提取抽象后仍然成立的设计思路（例如"用全局自注意力捕捉跨变量长程依赖"，而不是"用了 14 层 ViT"这种具体配置）。
+4. **去重与合并**：对每个候选模块，先在已有条目里找"核心机制是否本质相同"（哪怕论文叫法不同）。
+   - 相同/高度相似 → 不新建条目，在该模块的"出现的论文"列表里追加本篇论文，并记录与已有实现的差异/变体。
+   - 确实是新机制 → 按模板新建条目，归入合适的分类（已有分类不够用时可以新增分类）。
+5. **更新顶部的模块索引表**，保证可以快速浏览全部模块。
+6. 完成后用一两句话告诉用户：本次新增了哪些模块、合并更新了哪些已有模块，知识库文件路径是什么。
+
 ## 注意事项
 
 - 不要止步于"这篇论文做了 XX 任务，达到了 SOTA"这类摘要式总结——这不是本技能的目标。
@@ -85,3 +105,4 @@ description: Deep-read one or more research papers from the author's perspective
 
 - `references/note-template.md`：单篇论文精读笔记模板（含数据/输出卡片格式）
 - `references/cross-domain-checklist.md`：跨领域迁移可行性检查清单
+- `references/module-knowledge-base.md`：方法模块知识库的条目格式、分类建议与去重合并规则
