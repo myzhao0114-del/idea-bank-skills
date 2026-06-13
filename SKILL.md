@@ -1,6 +1,6 @@
 ---
-name: paper-method-deconstruct
-description: Deep-read one or more research papers from the author's perspective to reverse-engineer their method — design rationale, technical approach, required input data (raster, grid-extracted tables, vectors, time series, etc.), produced outputs, and how to transplant the method into a different domain or dataset. Also maintains a cumulative "方法模块知识库" Markdown file that aggregates reusable method modules across papers read over time. Use when the user gives paper PDFs/links/text and asks "怎么学这篇论文的方法", "这个方法的设计思路是什么", "输入输出是什么", "能不能用到我的数据/领域上", or wants a reproducible method breakdown rather than a literature summary.
+name: idea-bank-skills
+description: Deep-read one or more research papers from the author's perspective to reverse-engineer their method — design rationale, technical approach, required input data (raster, grid-extracted tables, vectors, time series, etc.), produced outputs, and how to transplant the method into a different domain or dataset. Also maintains a cumulative "方法模块知识库" file that aggregates reusable method modules across papers read over time, so ideas compound across your reading instead of evaporating after each paper. Use when the user gives paper PDFs/links/text and asks "怎么学这篇论文的方法", "这个方法的设计思路是什么", "输入输出是什么", "能不能用到我的数据/领域上", or wants a reproducible method breakdown rather than a literature summary.
 ---
 
 # 论文作者视角精读
