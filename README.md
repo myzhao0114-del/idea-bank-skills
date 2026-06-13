@@ -10,11 +10,9 @@
 
 ### 为什么做这个
 
-读论文的时候经常是这样：一篇文章看完，心里觉得"这个思路挺巧妙"，但读完就翻篇了。等到下次写论文、卡在某个设计上想不出办法的时候，完全想不起来"我好像在哪篇论文里见过类似的处理方式"，只能重新去找、重新去想。读得越多，这种"读过但留不下"的感觉反而越强——脑子里堆了一堆论文的印象，却没法直接拿来用。
+这个 skill 主要用于**文献精读与文献积累**：给它一篇论文（PDF），它会把这篇论文的方法思路和流程拆解、模块化——整体设计思想、整体方法拆解、输入数据类型、输出数据类型，以及"哪些部分可以跨领域应用"，逐项总结清楚，并把这些内容生成 Word 文档导出到你指定的目录，方便长期保存和查阅。
 
-更可惜的是跨领域的部分。很多方法的核心机制其实是领域无关的——比如"用一个生成式先验约束生成网络的局部统计量"这种思路，气象预报里能用，城市内涝预测里也能用，本质上是同一件事，只是换了个名字、换了个数据集。但如果读的时候没有把这层"本质"抽出来，下次在另一个领域遇到一篇用了同样思路的论文，大概率认不出来，更别说反过来主动想到"我现在这个问题，是不是可以套用我以前读过的某个机制"。
-
-这个 skill 想做的事情很朴素：**每读一篇论文，不止产出一份精读笔记，还顺手把里面"换个数据集/换个领域依然成立"的方法思路提炼成一个个模块，存进一个会越攒越厚的知识库里**。读得越多，这个库就越有价值——下次精读新论文时，会自动去库里比对"这个机制是不是和之前某个模块本质相同"，相同就合并记录（多了一个"这个思路在哪些论文里都出现过"的证据），不同就新建条目。时间长了，这就是你自己的"idea 银行"：写论文卡住、想找idea的时候，翻一翻这个库，看看有没有哪个攒下来的模块能搬到当前的问题上——也就是"厚积薄发"。
+更重要的是积累。每读一篇新论文，提炼出来的"可跨领域应用的方法模块"会追加/合并进同一份知识库——读得越多，这份知识库就越厚。这么做的目的是"厚积薄发"：学习不同领域、不同方法的论文，把里面的思路用到自己的领域上，写论文的时候有地方找idea，而不是每次都从零想。
 
 ### 这个 skill 做什么
 
@@ -89,11 +87,9 @@ idea-bank-skills/
 
 ### Why this exists
 
-Reading papers often goes like this: you finish one, think "that's a clever idea", and then move on. Months later, stuck on a design problem in your own work, you have a vague feeling that you've seen something similar before — but you can't remember where, so you end up reinventing it from scratch. The more you read, the worse this gets: a pile of half-remembered papers that you can't actually draw on.
+This skill is built for **deep-reading and accumulating research papers**. Give it a paper (PDF), and it breaks down the method's design and pipeline into modular pieces — overall design rationale, method breakdown, input data type, output data type, and the parts that can be applied across domains — summarizes each of them, and exports the result as a Word document to a directory you specify, so it's easy to keep and revisit.
 
-The cross-domain case is even more frustrating. Many core mechanisms are genuinely domain-agnostic — e.g. "use a coarse generative prior to condition the local statistics of a generation network" shows up in weather nowcasting, urban flood modeling, and plenty of other places, under completely different names. If you don't abstract that out when you first read it, you won't recognize it the next time it shows up in a different field — let alone think to apply it proactively to your own problem.
-
-What this skill does is simple: **every time you deep-read a paper, in addition to producing a reading note, it also extracts the "this idea still holds if you swap the dataset or domain" parts into modules, and appends them to a knowledge base that keeps growing**. The more you read, the more valuable that knowledge base becomes — each new paper gets checked against existing modules ("is this the same core mechanism as something I've already logged?"), merging when it matches and creating a new entry when it doesn't. Over time this becomes your own idea bank: when you're stuck writing a paper or looking for an idea, you can browse it and see what's transferable to your current problem.
+The real point is accumulation. Every new paper you read gets checked against a single growing knowledge base, and its "this still holds in a different domain" modules get appended or merged into it — the more you read, the thicker that knowledge base gets. The goal is to let small efforts compound: by learning methods and ideas from different fields and applying them to your own, you write better papers and build up a steady reservoir of ideas to draw on.
 
 ### What it does
 
